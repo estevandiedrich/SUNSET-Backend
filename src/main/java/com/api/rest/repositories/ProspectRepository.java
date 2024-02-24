@@ -13,4 +13,9 @@ public interface ProspectRepository extends CrudRepository<Prospect, Long>{
 		prosp.setExcluido(Boolean.TRUE);
 		this.save(prosp);
 	}
+	@Override
+	default Iterable<Prospect> findAll(){
+		return this.findByExcluidoFalse();
+	}
+	Iterable<Prospect> findByExcluidoFalse();
 }
